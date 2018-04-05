@@ -1,46 +1,131 @@
+from enum import Enum
 import socket
 import ssl
 import base64
 
 
-host, port = 'smtp.yandex.ru', 587
-
-# CREATE SOCKET
-sock = socket.socket()
-sock.settimeout(10)
-
-sock.connect((host, port))
-sock.send(b'ehlo localhost\r\n')
-print(sock.recv(1024))
-sock.send(b'starttls\r\n')
-print(sock.recv(1024))
-print(sock.recv(1024))
+class State(Enum):
+    """Возможные состояние клиента."""
+    HELLO = 0
 
 
-# WRAP SOCKET
-wrappedSocket = ssl.wrap_socket(sock, ssl_version=ssl.PROTOCOL_SSLv23)
+class SMTP(object):
+    """Класс для общения с сервером и отправки писем."""
+    def __init__(self, host: int, port: int) -> None:
+        """Инициализируем клиент."""
+        self.host = host
+        self.port = port
+        self.sock = socket.socket()
+        self.sock.settimeout(10)
+        self.retries = 3
+        self.state = State.HELLO
 
+    def connect(self) -> None:
+        """Подключаемся к серверу."""
+        for i in range(self.retries):
+            try:
+                self.sock.connect((self.host, self.port))
+            except socket.timeout:
+                continue
+            else:
+                return
 
-wrappedSocket.send(b'auth login\r\n')
-print(wrappedSocket.recv(1024))
+    def send(self, content: bytes) -> None:
+        """Отправляем серверу данное содержимое."""
+        self.sock.send(content + b'\r\n')
 
-wrappedSocket.send(base64.b64encode(b'pyt4on@yandex.ru') + b'\r\n')
-print(wrappedSocket.recv(1024))
+    def receive(self) -> bytes:
+        """Получаем ответ сервера на отправленную команду."""
+        for i in range(self.retries):
+            try:
+                return self.sock.recv(1024)
+            except socket.timeout:
+                continue
 
-wrappedSocket.send(base64.b64encode(b'ylmqdrnndcwkesgz') + b'\r\n')
-print(wrappedSocket.recv(1024))
+    def hello(self) -> None:
+        """Отправляем команду приветствия."""
+        self.send(b'ehlo localhost')
+        resp = self.receive().split()
 
-wrappedSocket.send(b'mail from: pyt4on@yandex.ru\r\n')
-print(wrappedSocket.recv(1024))
+        if int(resp[0]) != 250:
+            raise Exception
 
-wrappedSocket.send(b'rcpt to: somebody@gmail.com\r\n')
-print(wrappedSocket.recv(1024))
+    def start_tls(self) -> None:
+        """Начинаем передачу по защищённому соединению."""
+        self.send(b'starttls')
+        resp = self.receive().split()
+        resp2 = self.receive().split()
 
-wrappedSocket.send(b'data\r\n')
-print(wrappedSocket.recv(1024))
+        if int(resp[0]) != 250 or not resp2:
+            raise Exception
 
-wrappedSocket.send(b'Date: Thu, 1 Apr 2048 05:33:29 -0700\nFrom: Sender <pyt4on@yandex.ru>\nSubject: New email'
-                   b'\nTo: somebody@gmail.com\n\nText.\n.\r\n')
-print(wrappedSocket.recv(1024))
+    def wrap_socket(self) -> None:
+        """Оборачиваем сокет в зашифрованный формат."""
+        self.sock = ssl.wrap_socket(self.sock, ssl_version=ssl.PROTOCOL_SSLv23)
 
-wrappedSocket.close()
+    def auth(self) -> None:
+        """Запускаем процесс авторизации."""
+        self.send(b'auth login')
+        resp = self.receive().split()
+
+        if int(resp[0]) != 334:
+            raise Exception
+
+    def login(self, login: bytes) -> None:
+        """Отправляем логин для сервера."""
+        self.send(base64.b64encode(login))
+
+        resp = self.receive().split()
+
+        if int(resp[0]) != 334:
+            raise Exception
+
+    def password(self, password: bytes) -> None:
+        """Отправляем логин для сервера."""
+        self.send(base64.b64encode(password))
+
+        resp = self.receive().split()
+
+        if int(resp[0]) != 334:
+            raise Exception
+
+    def mail_from(self, sender: bytes) -> None:
+        """Отправляем серверу адрес отправителя."""
+        self.send(b'mail from: <' + sender + b'>')
+
+        resp = self.receive().split()
+
+        if int(resp[0]) != 250:
+            raise Exception
+
+    def mail_to(self, recepient: bytes) -> None:
+        """Отправляем серверу адрес получателя."""
+        self.send(b'rcpt to: <' + recepient + b'>')
+
+        resp = self.receive().split()
+
+        if int(resp[0]) != 250:
+            raise Exception
+
+    def data(self) -> None:
+        """Начинаем передачу содержимого письма."""
+        self.send(b'data')
+
+        resp = self.receive().split()
+
+        if int(resp[0]) != 250:
+            raise Exception
+
+    def send_letter(self, content: bytes) -> None:
+        """Передаём серверу содержимое письма."""
+        self.send(content)
+        self.send(b'.\r\n')
+
+        resp = self.receive().split()
+
+        if int(resp[0]) != 250:
+            raise Exception
+
+    def disconnect(self) -> None:
+        """Закрываем соединение."""
+        self.sock.close()
