@@ -1,34 +1,44 @@
-from enum import Enum
+import base64
 import socket
 import ssl
-import base64
-
-
-class State(Enum):
-    """Возможные состояние клиента."""
-    HELLO = 0
+import logging
 
 
 class SMTP(object):
     """Класс для общения с сервером и отправки писем."""
-    def __init__(self, host: int, port: int) -> None:
+    def __init__(self, host: str, port: int) -> None:
         """Инициализируем клиент."""
         self.host = host
         self.port = port
         self.sock = socket.socket()
         self.sock.settimeout(10)
         self.retries = 3
-        self.state = State.HELLO
+
+        self.log = logging.Logger('SMTP')
+        self.log.setLevel(logging.INFO)
+
+        log_handler = logging.StreamHandler()
+        log_handler.setLevel(logging.INFO)
+        log_fmt = logging.Formatter('[{name}]: {message}\n',
+                                    style='{')
+        log_handler.setFormatter(log_fmt)
+        self.log.addHandler(log_handler)
+
+        self.log.info('Клиент инициализирован.')
 
     def connect(self) -> None:
         """Подключаемся к серверу."""
         for i in range(self.retries):
             try:
                 self.sock.connect((self.host, self.port))
+                self.log.info('Установлено соединение с сервером.')
             except socket.timeout:
+                self.log.info('Попытка {} не удалась, пробуем ещё раз.'.format(i))
                 continue
             else:
                 return
+        self.log.warning('Не удалось установить соединение с сервером.')
+        raise Exception
 
     def send(self, content: bytes) -> None:
         """Отправляем серверу данное содержимое."""
@@ -44,50 +54,46 @@ class SMTP(object):
 
     def hello(self) -> None:
         """Отправляем команду приветствия."""
+        self.log.info('Отправляем приветствие серверу.')
         self.send(b'ehlo localhost')
         resp = self.receive().split()
 
-        if int(resp[0]) != 250:
-            raise Exception
+        if int(resp[0]) != 220:
+            self.log.warning('Получен код ошибки при приветствии.')
+            raise Exception(resp)
 
     def start_tls(self) -> None:
         """Начинаем передачу по защищённому соединению."""
+        self.log.info('Отправляем запрос на TLS-соединение.')
         self.send(b'starttls')
         resp = self.receive().split()
-        resp2 = self.receive().split()
+        # resp2 = self.receive().split()
+        print(resp)
 
-        if int(resp[0]) != 250 or not resp2:
-            raise Exception
+        if not resp[0].startswith(b'250'):
+            self.log.warning('Запрос на TLS не получил безошибочный ответ.')
+            raise Exception(resp)
 
     def wrap_socket(self) -> None:
         """Оборачиваем сокет в зашифрованный формат."""
+        self.log.info('Сокет для защищённого соединения готов.')
         self.sock = ssl.wrap_socket(self.sock, ssl_version=ssl.PROTOCOL_SSLv23)
 
     def auth(self) -> None:
         """Запускаем процесс авторизации."""
+        self.log.info('Отправляем запрос на авторизацию.')
         self.send(b'auth login')
-        resp = self.receive().split()
-
-        if int(resp[0]) != 334:
-            raise Exception
+        print(self.receive())
 
     def login(self, login: bytes) -> None:
         """Отправляем логин для сервера."""
         self.send(base64.b64encode(login))
-
-        resp = self.receive().split()
-
-        if int(resp[0]) != 334:
-            raise Exception
+        self.receive()
 
     def password(self, password: bytes) -> None:
         """Отправляем логин для сервера."""
         self.send(base64.b64encode(password))
-
-        resp = self.receive().split()
-
-        if int(resp[0]) != 334:
-            raise Exception
+        print(self.receive().split())
 
     def mail_from(self, sender: bytes) -> None:
         """Отправляем серверу адрес отправителя."""
@@ -129,3 +135,14 @@ class SMTP(object):
     def disconnect(self) -> None:
         """Закрываем соединение."""
         self.sock.close()
+
+
+if __name__ == '__main__':
+    smtp = SMTP('smtp.yandex.ru', 587)
+    smtp.connect()
+    smtp.hello()
+    smtp.start_tls()
+    smtp.auth()
+    smtp.login(b'pyt4on@yandex.ru')
+    smtp.password(b'17401725')
+    smtp.mail_from(b'pyt4on@yandex.ru')
