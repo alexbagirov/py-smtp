@@ -6,143 +6,154 @@ import logging
 
 class SMTP(object):
     """Класс для общения с сервером и отправки писем."""
-    def __init__(self, host: str, port: int) -> None:
+    def __init__(self) -> None:
         """Инициализируем клиент."""
-        self.host = host
-        self.port = port
         self.sock = socket.socket()
+        self.enc_sock = None
+        self.encrypted = False
         self.sock.settimeout(10)
         self.retries = 3
 
-        self.log = logging.Logger('SMTP')
-        self.log.setLevel(logging.INFO)
+        self.client = logging.getLogger('Client')
+        self.server = logging.getLogger('Server')
+        self.client.setLevel(logging.INFO)
+        self.server.setLevel(logging.INFO)
 
         log_handler = logging.StreamHandler()
         log_handler.setLevel(logging.INFO)
         log_fmt = logging.Formatter('[{name}]: {message}\n',
                                     style='{')
         log_handler.setFormatter(log_fmt)
-        self.log.addHandler(log_handler)
+        self.client.addHandler(log_handler)
+        self.server.addHandler(log_handler)
 
-        self.log.info('Клиент инициализирован.')
+        self.client.info('Клиент инициализирован.')
 
-    def connect(self) -> None:
+    def connect(self, host: str, port: int) -> None:
         """Подключаемся к серверу."""
         for i in range(self.retries):
             try:
-                self.sock.connect((self.host, self.port))
-                self.log.info('Установлено соединение с сервером.')
+                self.sock.connect((host, port))
+                self.client.info('Установлено соединение с сервером.')
             except socket.timeout:
-                self.log.info('Попытка {} не удалась, пробуем ещё раз.'.format(i))
+                self.client.info('Попытка {} не удалась, пробуем ещё раз.'.format(i))
                 continue
             else:
                 return
-        self.log.warning('Не удалось установить соединение с сервером.')
+        self.client.warning('Не удалось установить соединение с сервером.')
         raise Exception
 
     def send(self, content: bytes) -> None:
         """Отправляем серверу данное содержимое."""
-        self.sock.send(content + b'\r\n')
+        if self.encrypted:
+            self.enc_sock.send(content + b'\r\n')
+        else:
+            self.sock.send(content + b'\r\n')
 
     def receive(self) -> bytes:
         """Получаем ответ сервера на отправленную команду."""
         for i in range(self.retries):
             try:
-                return self.sock.recv(1024)
+                answer = self.enc_sock.recv(1024) if self.encrypted else self.sock.recv(1024)
+                self.server.info(answer)
+                return answer
             except socket.timeout:
                 continue
 
     def hello(self) -> None:
         """Отправляем команду приветствия."""
-        self.log.info('Отправляем приветствие серверу.')
+        self.client.info('Отправляем приветствие серверу.')
         self.send(b'ehlo localhost')
         resp = self.receive().split()
 
         if int(resp[0]) != 220:
-            self.log.warning('Получен код ошибки при приветствии.')
+            self.client.warning('Получен код ошибки при приветствии.')
             raise Exception(resp)
 
     def start_tls(self) -> None:
         """Начинаем передачу по защищённому соединению."""
-        self.log.info('Отправляем запрос на TLS-соединение.')
+        self.client.info('Отправляем запрос на TLS-соединение.')
         self.send(b'starttls')
-        resp = self.receive().split()
-        # resp2 = self.receive().split()
-        print(resp)
-
-        if not resp[0].startswith(b'250'):
-            self.log.warning('Запрос на TLS не получил безошибочный ответ.')
-            raise Exception(resp)
+        resp = self.receive()
+        resp2 = self.receive()
 
     def wrap_socket(self) -> None:
         """Оборачиваем сокет в зашифрованный формат."""
-        self.log.info('Сокет для защищённого соединения готов.')
-        self.sock = ssl.wrap_socket(self.sock, ssl_version=ssl.PROTOCOL_SSLv23)
+        self.client.info('Сокет для защищённого соединения готов.')
+        self.enc_sock = ssl.wrap_socket(self.sock,
+                                        ssl_version=ssl.PROTOCOL_SSLv23)
+        self.encrypted = True
+
+    def encrypt(self) -> None:
+        """
+        Запрашиваем передачу данных по защищённому соединению и
+        оборачиваем сокет.
+        """
+        self.start_tls()
+        self.wrap_socket()
 
     def auth(self) -> None:
         """Запускаем процесс авторизации."""
-        self.log.info('Отправляем запрос на авторизацию.')
+        self.client.info('Отправляем запрос на авторизацию.')
         self.send(b'auth login')
-        print(self.receive())
+        resp = self.receive()
 
-    def login(self, login: bytes) -> None:
+    def login(self, login: str) -> None:
         """Отправляем логин для сервера."""
-        self.send(base64.b64encode(login))
-        self.receive()
+        self.client.info('Отправляем логин.')
+        self.send(base64.b64encode(self.to_bytes(login)))
+        resp = self.receive()
 
-    def password(self, password: bytes) -> None:
-        """Отправляем логин для сервера."""
-        self.send(base64.b64encode(password))
-        print(self.receive().split())
+    def password(self, password: str) -> None:
+        """Отправляем пароль для сервера."""
+        self.client.info('Отправляем пароль.')
+        self.send(base64.b64encode(self.to_bytes(password)))
+        resp = self.receive()
 
-    def mail_from(self, sender: bytes) -> None:
+    def authorize(self, login: str, password: str) -> None:
+        """Авторизуемся на севрере."""
+        self.auth()
+        self.login(login)
+        self.password(password)
+        self.client.info('Авторизация на сервере успешна.')
+
+    def mail_from(self, sender: str) -> None:
         """Отправляем серверу адрес отправителя."""
-        self.send(b'mail from: <' + sender + b'>')
+        self.client.info('Передаём адрес отправителя.')
+        self.send(b'mail from: <' + self.to_bytes(sender) + b'>')
+        resp = self.receive()
 
-        resp = self.receive().split()
-
-        if int(resp[0]) != 250:
-            raise Exception
-
-    def mail_to(self, recepient: bytes) -> None:
+    def mail_to(self, recipient: str) -> None:
         """Отправляем серверу адрес получателя."""
-        self.send(b'rcpt to: <' + recepient + b'>')
-
-        resp = self.receive().split()
-
-        if int(resp[0]) != 250:
-            raise Exception
+        self.client.info('Передаём адрес получателя')
+        self.send(b'rcpt to: <' + self.to_bytes(recipient) + b'>')
+        resp = self.receive()
 
     def data(self) -> None:
         """Начинаем передачу содержимого письма."""
+        self.client.info('Сообщаем о начале передачи письма.')
         self.send(b'data')
+        resp = self.receive()
 
-        resp = self.receive().split()
-
-        if int(resp[0]) != 250:
-            raise Exception
-
-    def send_letter(self, content: bytes) -> None:
+    def letter(self, content: str) -> None:
         """Передаём серверу содержимое письма."""
-        self.send(content)
+        self.client.info('Передаём письмо.')
+        self.send(self.to_bytes(content))
         self.send(b'.\r\n')
+        resp = self.receive()
 
-        resp = self.receive().split()
-
-        if int(resp[0]) != 250:
-            raise Exception
+    def send_letter(self, content: str) -> None:
+        """Отправляем письмо."""
+        self.data()
+        self.letter(content)
+        self.client.info('Письмо отправлено.')
 
     def disconnect(self) -> None:
         """Закрываем соединение."""
+        self.client.info('Закрываем соединение.')
+        self.send(b'quit')
         self.sock.close()
 
-
-if __name__ == '__main__':
-    smtp = SMTP('smtp.yandex.ru', 587)
-    smtp.connect()
-    smtp.hello()
-    smtp.start_tls()
-    smtp.auth()
-    smtp.login(b'pyt4on@yandex.ru')
-    smtp.password(b'17401725')
-    smtp.mail_from(b'pyt4on@yandex.ru')
+    @staticmethod
+    def to_bytes(s: str) -> bytes:
+        return s.encode()
