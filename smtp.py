@@ -4,6 +4,12 @@ import ssl
 import logging
 
 
+class SMTPException(Exception):
+    """Основной класс исключений."""
+    def __init__(self, message) -> None:
+        self.message = message
+
+
 class SMTP(object):
     """Класс для общения с сервером и отправки писем."""
     def __init__(self) -> None:
@@ -31,17 +37,17 @@ class SMTP(object):
 
     def connect(self, host: str, port: int) -> None:
         """Подключаемся к серверу."""
+        self.client.info('Подключаемся к серверу.')
         for i in range(self.retries):
             try:
                 self.sock.connect((host, port))
                 self.client.info('Установлено соединение с сервером.')
-            except socket.timeout:
+            except (socket.timeout, OSError):
                 self.client.info('Попытка {} не удалась, пробуем ещё раз.'.format(i))
                 continue
             else:
                 return
-        self.client.warning('Не удалось установить соединение с сервером.')
-        raise Exception
+        raise SMTPException('Не удалось подключиться к серверу.')
 
     def send(self, content: bytes) -> None:
         """Отправляем серверу данное содержимое."""
@@ -59,6 +65,7 @@ class SMTP(object):
                 return answer
             except socket.timeout:
                 continue
+        raise SMTPException('Не удалось получить ответ от сервера.')
 
     def hello(self) -> None:
         """Отправляем команду приветствия."""
@@ -68,14 +75,14 @@ class SMTP(object):
 
         if int(resp[0]) != 220:
             self.client.warning('Получен код ошибки при приветствии.')
-            raise Exception(resp)
+            raise SMTPException(resp)
 
     def start_tls(self) -> None:
         """Начинаем передачу по защищённому соединению."""
         self.client.info('Отправляем запрос на TLS-соединение.')
         self.send(b'starttls')
-        resp = self.receive()
-        resp2 = self.receive()
+        self.receive()
+        self.receive()
 
     def wrap_socket(self) -> None:
         """Оборачиваем сокет в зашифрованный формат."""
@@ -96,19 +103,19 @@ class SMTP(object):
         """Запускаем процесс авторизации."""
         self.client.info('Отправляем запрос на авторизацию.')
         self.send(b'auth login')
-        resp = self.receive()
+        self.receive()
 
     def login(self, login: str) -> None:
         """Отправляем логин для сервера."""
         self.client.info('Отправляем логин.')
         self.send(base64.b64encode(self.to_bytes(login)))
-        resp = self.receive()
+        self.receive()
 
     def password(self, password: str) -> None:
         """Отправляем пароль для сервера."""
         self.client.info('Отправляем пароль.')
         self.send(base64.b64encode(self.to_bytes(password)))
-        resp = self.receive()
+        self.receive()
 
     def authorize(self, login: str, password: str) -> None:
         """Авторизуемся на севрере."""
@@ -121,26 +128,26 @@ class SMTP(object):
         """Отправляем серверу адрес отправителя."""
         self.client.info('Передаём адрес отправителя.')
         self.send(b'mail from: <' + self.to_bytes(sender) + b'>')
-        resp = self.receive()
+        self.receive()
 
     def mail_to(self, recipient: str) -> None:
         """Отправляем серверу адрес получателя."""
         self.client.info('Передаём адрес получателя')
         self.send(b'rcpt to: <' + self.to_bytes(recipient) + b'>')
-        resp = self.receive()
+        self.receive()
 
     def data(self) -> None:
         """Начинаем передачу содержимого письма."""
         self.client.info('Сообщаем о начале передачи письма.')
         self.send(b'data')
-        resp = self.receive()
+        self.receive()
 
     def letter(self, content: str) -> None:
         """Передаём серверу содержимое письма."""
         self.client.info('Передаём письмо.')
         self.send(self.to_bytes(content))
         self.send(b'.\r\n')
-        resp = self.receive()
+        self.receive()
 
     def send_letter(self, content: str) -> None:
         """Отправляем письмо."""

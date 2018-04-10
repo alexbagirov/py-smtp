@@ -1,13 +1,13 @@
 import unittest
-from main import Parser
+from smtp import SMTP, SMTPException
 
 
-class TestParser(unittest.TestCase):
+class TestSMTP(unittest.TestCase):
     def setUp(self) -> None:
-        self.parser = Parser()
+        self.smtp = SMTP()
 
-    def test_something(self):
-        self.assertEqual(5, 5)
+    def test_exception_when_wrong_server(self):
+        self.assertRaises(SMTPException, self.smtp.connect('a', 555))
 
 
 if __name__ == '__main__':
