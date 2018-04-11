@@ -10,7 +10,7 @@ class SMTPException(Exception):
         self.message = message
 
 
-class SMTP(object):
+class SMTP:
     """Класс для общения с сервером и отправки писем."""
     def __init__(self) -> None:
         """Инициализируем клиент."""
@@ -52,9 +52,9 @@ class SMTP(object):
     def send(self, content: bytes) -> None:
         """Отправляем серверу данное содержимое."""
         if self.encrypted:
-            self.enc_sock.send(content + b'\r\n')
+            self.enc_sock.sendall(content + b'\r\n')
         else:
-            self.sock.send(content + b'\r\n')
+            self.sock.sendall(content + b'\r\n')
 
     def receive(self) -> bytes:
         """Получаем ответ сервера на отправленную команду."""
@@ -163,4 +163,4 @@ class SMTP(object):
 
     @staticmethod
     def to_bytes(s: str) -> bytes:
-        return s.encode()
+        return s.encode('ascii')

@@ -7,7 +7,8 @@ class TestSMTP(unittest.TestCase):
         self.smtp = SMTP()
 
     def test_exception_when_wrong_server(self):
-        self.assertRaises(SMTPException, self.smtp.connect('a', 555))
+        with self.assertRaises(SMTPException):
+            self.smtp.connect('a', 555)
 
 
 if __name__ == '__main__':
