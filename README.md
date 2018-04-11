@@ -1,4 +1,5 @@
 ## py-smtp
+[![Build Status](https://travis-ci.com/alexbagirov/py-smtp.svg?token=qyY9tZLUJnscK6q7dM7T&branch=master)](https://travis-ci.com/alexbagirov/py-smtp)
 
 #### Description
 This program implements SMTP protocol using Python without any special modules.
