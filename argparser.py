@@ -1,5 +1,6 @@
-import argparse as ap
 from getpass import getpass
+import argparse as ap
+import fileinput
 
 
 class Parser:
@@ -21,15 +22,21 @@ class Parser:
         self.parser.add_argument('-r', '--recipient', help='recipient address',
                                  required=True)
         self.parser.add_argument('--subject', help='letter subject')
-        self.parser.add_argument('-t', '--text', help='full letter content',
-                                 default='')
+        self.parser.add_argument('-t', '--text', help='letter text content',
+                                 default=None)
         self.parser.add_argument('--no-ssl', help='disable secure connection',
                                  action='store_true')
 
     def parse(self) -> ap.Namespace:
         args = self.parser.parse_args()
+
         if args.password is None:
             args.password = getpass()
         if args.name is None:
             args.name = args.sender
+        if args.file is not None:
+            args.text = fileinput.input(args.file)
+        else:
+            args.text = fileinput.input()
+
         return args
