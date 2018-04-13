@@ -1,6 +1,7 @@
 from getpass import getpass
 import argparse as ap
 import fileinput
+import sys
 
 
 class Parser:
@@ -22,8 +23,11 @@ class Parser:
         self.parser.add_argument('-r', '--recipient', help='recipient address',
                                  required=True)
         self.parser.add_argument('--subject', help='letter subject')
-        self.parser.add_argument('-t', '--text', help='letter text content',
-                                 default=None)
+        self.text = self.parser.add_mutually_exclusive_group()
+        self.text.add_argument('-t', '--text', help='letter text content',
+                               default=None)
+        self.text.add_argument('-f', '--file', help='letter text file',
+                               default=None)
         self.parser.add_argument('--no-ssl', help='disable secure connection',
                                  action='store_true')
 
@@ -34,9 +38,14 @@ class Parser:
             args.password = getpass()
         if args.name is None:
             args.name = args.sender
-        if args.file is not None:
-            args.text = fileinput.input(args.file)
-        else:
-            args.text = fileinput.input()
+        if args.text is None:
+            f = sys.stdin if args.file is None \
+                else fileinput.input(args.file)
+            text = ''
+
+            for line in f:
+                text += line
+
+            args.text = text
 
         return args

@@ -60,7 +60,11 @@ class SMTP:
         """Получаем ответ сервера на отправленную команду."""
         for i in range(self.retries):
             try:
-                answer = self.enc_sock.recv(1024) if self.encrypted else self.sock.recv(1024)
+                answer = b''
+                while not answer.endswith(b'\r\n'):
+                    part = self.enc_sock.recv(1) if self.encrypted \
+                        else self.sock.recv(1)
+                    answer += part
                 self.server.info(answer)
                 return answer
             except socket.timeout:
@@ -81,8 +85,17 @@ class SMTP:
         """Начинаем передачу по защищённому соединению."""
         self.client.info('Отправляем запрос на TLS-соединение.')
         self.send(b'starttls')
-        self.receive()
-        self.receive()
+        while True:
+            resp = self.receive()
+            if not resp.startswith(b'250'):
+                raise SMTPException('Возникла ошибка при установке '
+                                    'защищённого соединения.')
+            if resp.startswith(b'250 '):
+                break
+        resp = self.receive()
+        if not resp.startswith(b'220'):
+            raise SMTPException('Возникла ошибка при установке '
+                                'защищённого соединения.')
 
     def wrap_socket(self) -> None:
         """Оборачиваем сокет в зашифрованный формат."""
