@@ -12,7 +12,7 @@ class SMTPException(Exception):
 
 class SMTP:
     """Класс для общения с сервером и отправки писем."""
-    def __init__(self) -> None:
+    def __init__(self, verbose=False) -> None:
         """Инициализируем клиент."""
         self.sock = socket.socket()
         self.enc_sock = None
@@ -26,7 +26,10 @@ class SMTP:
         self.server.setLevel(logging.INFO)
 
         log_handler = logging.StreamHandler()
-        log_handler.setLevel(logging.INFO)
+        if verbose:
+            log_handler.setLevel(logging.INFO)
+        else:
+            log_handler.setLevel(logging.WARN)
         log_fmt = logging.Formatter('[{name}]: {message}\n',
                                     style='{')
         log_handler.setFormatter(log_fmt)
@@ -43,7 +46,8 @@ class SMTP:
                 self.sock.connect((host, port))
                 self.client.info('Установлено соединение с сервером.')
             except (socket.timeout, OSError):
-                self.client.info('Попытка {} не удалась, пробуем ещё раз.'.format(i))
+                self.client.info('Попытка {} не удалась, '
+                                 'пробуем ещё раз.'.format(i))
                 continue
             else:
                 return
@@ -75,11 +79,7 @@ class SMTP:
         """Отправляем команду приветствия."""
         self.client.info('Отправляем приветствие серверу.')
         self.send(b'ehlo localhost')
-        resp = self.receive().split()
-
-        if int(resp[0]) != 220:
-            self.client.warning('Получен код ошибки при приветствии.')
-            raise SMTPException(resp)
+        self.check_code(b'220')
 
     def start_tls(self) -> None:
         """Начинаем передачу по защищённому соединению."""
@@ -116,19 +116,19 @@ class SMTP:
         """Запускаем процесс авторизации."""
         self.client.info('Отправляем запрос на авторизацию.')
         self.send(b'auth login')
-        self.receive()
+        self.check_code(b'334')
 
     def login(self, login: str) -> None:
         """Отправляем логин для сервера."""
         self.client.info('Отправляем логин.')
         self.send(base64.b64encode(self.to_bytes(login)))
-        self.receive()
+        self.check_code(b'334')
 
     def password(self, password: str) -> None:
         """Отправляем пароль для сервера."""
         self.client.info('Отправляем пароль.')
         self.send(base64.b64encode(self.to_bytes(password)))
-        self.receive()
+        self.check_code(b'235')
 
     def authorize(self, login: str, password: str) -> None:
         """Авторизуемся на севрере."""
@@ -141,26 +141,29 @@ class SMTP:
         """Отправляем серверу адрес отправителя."""
         self.client.info('Передаём адрес отправителя.')
         self.send(b'mail from: <' + self.to_bytes(sender) + b'>')
-        self.receive()
+        resp = self.receive()
+
+        if not resp.startswith(b'250'):
+            raise SMTPException(resp)
 
     def mail_to(self, recipient: str) -> None:
         """Отправляем серверу адрес получателя."""
         self.client.info('Передаём адрес получателя')
         self.send(b'rcpt to: <' + self.to_bytes(recipient) + b'>')
-        self.receive()
+        self.check_code(b'250')
 
     def data(self) -> None:
         """Начинаем передачу содержимого письма."""
         self.client.info('Сообщаем о начале передачи письма.')
         self.send(b'data')
-        self.receive()
+        self.check_code(b'354')
 
     def letter(self, content: str) -> None:
         """Передаём серверу содержимое письма."""
         self.client.info('Передаём письмо.')
         self.send(self.to_bytes(content))
         self.send(b'.\r\n')
-        self.receive()
+        self.check_code(b'250')
 
     def send_letter(self, content: str) -> None:
         """Отправляем письмо."""
@@ -173,6 +176,11 @@ class SMTP:
         self.client.info('Закрываем соединение.')
         self.send(b'quit')
         self.sock.close()
+
+    def check_code(self, ok_code: bytes) -> None:
+        resp = self.receive()
+        if not resp.startswith(ok_code):
+            raise SMTPException(resp)
 
     @staticmethod
     def to_bytes(s: str) -> bytes:

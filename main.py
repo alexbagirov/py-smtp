@@ -6,7 +6,7 @@ from argparser import Parser
 def run() -> None:
     parser = Parser()
     args = parser.parse()
-    smtp = SMTP()
+    smtp = SMTP(args.verbose)
     email = Email(args.sender, args.recipient, args.name,
                   args.subject, args.text)
 

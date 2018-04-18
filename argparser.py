@@ -30,6 +30,9 @@ class Parser:
                                default=None)
         self.parser.add_argument('--no-ssl', help='disable secure connection',
                                  action='store_true')
+        self.parser.add_argument('-v', '--verbose', help='provide all program'
+                                                         'logs to console',
+                                 action='store_true')
 
     def parse(self) -> ap.Namespace:
         args = self.parser.parse_args()

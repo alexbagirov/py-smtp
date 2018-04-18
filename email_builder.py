@@ -15,5 +15,7 @@ class Email:
         return 'Date: {}\nFrom: {} <{}>\n' \
                'Subject: {}\nTo: {}\n\n{}\r\n'.format(self.date,
                                                       self.sender_name,
-                                                      self.sender, self.subject,
-                                                      self.recipient, self.text)
+                                                      self.sender,
+                                                      self.subject,
+                                                      self.recipient,
+                                                      self.text)

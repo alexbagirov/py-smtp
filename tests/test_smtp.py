@@ -9,16 +9,20 @@ sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 import smtp
 
 
-class TestSMTP(unittest.TestCase):
-    def setUp(self) -> None:
+class TestSockets(unittest.TestCase):
+    def setUp(self):
         self.smtp = smtp.SMTP()
 
-    @patch('smtp.socket')
-    def test_exception_when_wrong_server(self, patched_socket):
-        patched_socket.connect.side_effect = OSError
+    @patch('smtp.socket.socket.connect')
+    def test_raises_exception_for_invalid_server(self, patched_connect):
+        patched_connect.side_effect = OSError
         with self.assertRaises(smtp.SMTPException):
-            self.smtp.connect('a', 555)
-        patched_socket.connect.assert_called()
+            self.smtp.connect('a', 888)
+
+    @patch('smtp.socket.socket.connect')
+    def test_connects_to_server(self, patched_connect):
+        self.smtp.connect('smtp.gmail.com', 587)
+        patched_connect.assert_called_with(('smtp.gmail.com', 587))
 
 
 if __name__ == '__main__':
