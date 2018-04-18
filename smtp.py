@@ -38,6 +38,11 @@ class SMTP:
 
         self.client.info('Клиент инициализирован.')
 
+    def __del__(self) -> None:
+        self.sock.close()
+        if self.enc_sock is not None:
+            self.enc_sock.close()
+
     def connect(self, host: str, port: int) -> None:
         """Подключаемся к серверу."""
         self.client.info('Подключаемся к серверу.')
