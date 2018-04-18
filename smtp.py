@@ -53,12 +53,17 @@ class SMTP:
                 return
         raise SMTPException('Не удалось подключиться к серверу.')
 
-    def send(self, content: bytes) -> None:
+    def send(self, content: (str, bytes), b64=False) -> None:
         """Отправляем серверу данное содержимое."""
-        if self.encrypted:
-            self.enc_sock.sendall(content + b'\r\n')
+        if b64:
+            content = content + b'\r\n'
         else:
-            self.sock.sendall(content + b'\r\n')
+            content = self.to_bytes(content + '\r\n')
+
+        if self.encrypted:
+            self.enc_sock.sendall(content)
+        else:
+            self.sock.sendall(content)
 
     def receive(self) -> bytes:
         """Получаем ответ сервера на отправленную команду."""
@@ -78,13 +83,13 @@ class SMTP:
     def hello(self) -> None:
         """Отправляем команду приветствия."""
         self.client.info('Отправляем приветствие серверу.')
-        self.send(b'ehlo localhost')
+        self.send('ehlo localhost')
         self.check_code(b'220')
 
     def start_tls(self) -> None:
         """Начинаем передачу по защищённому соединению."""
         self.client.info('Отправляем запрос на TLS-соединение.')
-        self.send(b'starttls')
+        self.send('starttls')
         while True:
             resp = self.receive()
             if not resp.startswith(b'250'):
@@ -115,19 +120,19 @@ class SMTP:
     def auth(self) -> None:
         """Запускаем процесс авторизации."""
         self.client.info('Отправляем запрос на авторизацию.')
-        self.send(b'auth login')
+        self.send('auth login')
         self.check_code(b'334')
 
     def login(self, login: str) -> None:
         """Отправляем логин для сервера."""
         self.client.info('Отправляем логин.')
-        self.send(base64.b64encode(self.to_bytes(login)))
+        self.send(base64.b64encode(self.to_bytes(login)), b64=True)
         self.check_code(b'334')
 
     def password(self, password: str) -> None:
         """Отправляем пароль для сервера."""
         self.client.info('Отправляем пароль.')
-        self.send(base64.b64encode(self.to_bytes(password)))
+        self.send(base64.b64encode(self.to_bytes(password)), b64=True)
         self.check_code(b'235')
 
     def authorize(self, login: str, password: str) -> None:
@@ -140,7 +145,7 @@ class SMTP:
     def mail_from(self, sender: str) -> None:
         """Отправляем серверу адрес отправителя."""
         self.client.info('Передаём адрес отправителя.')
-        self.send(b'mail from: <' + self.to_bytes(sender) + b'>')
+        self.send('mail from: <{}>'.format(sender))
         resp = self.receive()
 
         if not resp.startswith(b'250'):
@@ -149,20 +154,20 @@ class SMTP:
     def mail_to(self, recipient: str) -> None:
         """Отправляем серверу адрес получателя."""
         self.client.info('Передаём адрес получателя')
-        self.send(b'rcpt to: <' + self.to_bytes(recipient) + b'>')
+        self.send('rcpt to: <{}>'.format(recipient))
         self.check_code(b'250')
 
     def data(self) -> None:
         """Начинаем передачу содержимого письма."""
         self.client.info('Сообщаем о начале передачи письма.')
-        self.send(b'data')
+        self.send('data')
         self.check_code(b'354')
 
     def letter(self, content: str) -> None:
         """Передаём серверу содержимое письма."""
         self.client.info('Передаём письмо.')
-        self.send(self.to_bytes(content))
-        self.send(b'.\r\n')
+        self.send(content)
+        self.send('.\r\n')
         self.check_code(b'250')
 
     def send_letter(self, content: str) -> None:
@@ -174,7 +179,7 @@ class SMTP:
     def disconnect(self) -> None:
         """Закрываем соединение."""
         self.client.info('Закрываем соединение.')
-        self.send(b'quit')
+        self.send('quit')
         self.sock.close()
 
     def check_code(self, ok_code: bytes) -> None:
@@ -184,4 +189,4 @@ class SMTP:
 
     @staticmethod
     def to_bytes(s: str) -> bytes:
-        return s.encode('ascii')
+        return s.encode('utf-8')

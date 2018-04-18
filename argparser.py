@@ -22,6 +22,10 @@ class Parser:
                                  default=None)
         self.parser.add_argument('-r', '--recipient', help='recipient address',
                                  required=True)
+        self.parser.add_argument('-c', '--cc', help='carbon copy',
+                                 default=[], action='append')
+        self.parser.add_argument('-b', '--bcc', help='blind carbon copy',
+                                 default=[], action='append')
         self.parser.add_argument('--subject', help='letter subject')
         self.text = self.parser.add_mutually_exclusive_group()
         self.text.add_argument('-t', '--text', help='letter text content',
@@ -50,5 +54,6 @@ class Parser:
                 text += line
 
             args.text = text
+        args.recipients = [args.recipient] + args.bcc
 
         return args

@@ -7,7 +7,7 @@ def run() -> None:
     parser = Parser()
     args = parser.parse()
     smtp = SMTP(args.verbose)
-    email = Email(args.sender, args.recipient, args.name,
+    email = Email(args.sender, args.recipient, args.name, args.cc,
                   args.subject, args.text)
 
     try:
@@ -17,8 +17,9 @@ def run() -> None:
             smtp.encrypt()
         smtp.authorize(args.login, args.password)
         smtp.mail_from(args.sender)
-        smtp.mail_to(args.recipient)
-        smtp.send_letter(repr(email))
+        for recipient in args.recipients:
+            smtp.mail_to(recipient)
+        smtp.send_letter(email.to_string())
         smtp.disconnect()
     except SMTPException as e:
         smtp.client.warning('Возникла ошибка '
