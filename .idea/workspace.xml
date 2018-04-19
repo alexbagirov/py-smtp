@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aab14e14-7b7b-4651-8b69-61654a993674" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smtp.py" beforeDir="false" afterPath="$PROJECT_DIR$/smtp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_smtp.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_smtp.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,22 +13,37 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSMTP_test_exception_when_wrong_server.coverage" NAME="Unittests for test_smtp.TestSMTP.test_exception_when_wrong_server Coverage Results" MODIFIED="1523626689798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/py_smtp$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1523613314859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_connects_to_server.coverage" NAME="Unittests for test_smtp.TestSockets.test_connects_to_server Coverage Results" MODIFIED="1523651762330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_start_tls_error.coverage" NAME="Unittests for test_smtp.TestSockets.test_start_tls_error Coverage Results" MODIFIED="1524122519963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_send_letter.coverage" NAME="Unittests for test_smtp.TestSockets.test_send_letter Coverage Results" MODIFIED="1524124145566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_tests_TestSMTP_test_exception_when_wrong_server.coverage" NAME="Unittests for tests.TestSMTP.test_exception_when_wrong_server Coverage Results" MODIFIED="1523438006900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_socket_timeout.coverage" NAME="Unittests for test_smtp.TestSockets.test_socket_timeout Coverage Results" MODIFIED="1524078661496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$old_smtp.coverage" NAME="old_smtp Coverage Results" MODIFIED="1523260709287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_argparser_TestArgparser_test_something.coverage" NAME="Unittests for test_argparser.TestArgparser.test_something Coverage Results" MODIFIED="1523653005297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets.coverage" NAME="Unittests for test_smtp.TestSockets Coverage Results" MODIFIED="1524046710115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/py_smtp$Unittests_in_test_smtp_py.coverage" NAME="Unittests in test_smtp.py Coverage Results" MODIFIED="1524078667181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_in_test_argparser_py.coverage" NAME="Unittests in test_argparser.py Coverage Results" MODIFIED="1523653073667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_receive__small_data.coverage" NAME="Unittests for test_smtp.TestSockets.test_receive__small_data Coverage Results" MODIFIED="1524078484334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_in_tests_py.coverage" NAME="Unittests in tests.py Coverage Results" MODIFIED="1523363379524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/py_smtp$smtp.coverage" NAME="smtp Coverage Results" MODIFIED="1523261113955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/py_smtp$main.coverage" NAME="main Coverage Results" MODIFIED="1523287654154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_hello.coverage" NAME="Unittests for test_smtp.TestSockets.test_hello Coverage Results" MODIFIED="1523652048786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_auth.coverage" NAME="Unittests for test_smtp.TestSockets.test_auth Coverage Results" MODIFIED="1524123481730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_start_tls.coverage" NAME="Unittests for test_smtp.TestSockets.test_start_tls Coverage Results" MODIFIED="1524122264845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSMTP_test_exception_when_wrong_server.coverage" NAME="Unittests for test_smtp.TestSMTP.test_exception_when_wrong_server Coverage Results" MODIFIED="1523626689798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_mail_to_error.coverage" NAME="Unittests for test_smtp.TestSockets.test_mail_to_error Coverage Results" MODIFIED="1524123843346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1523613314859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_connects_to_server.coverage" NAME="Unittests for test_smtp.TestSockets.test_connects_to_server Coverage Results" MODIFIED="1523651762330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_wrap_socket.coverage" NAME="Unittests for test_smtp.TestSockets.test_wrap_socket Coverage Results" MODIFIED="1524122851296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets.coverage" NAME="Unittests for test_smtp.TestSockets Coverage Results" MODIFIED="1524120943393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_in_test_smtp_py.coverage" NAME="Unittests in test_smtp.py Coverage Results" MODIFIED="1524124168224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_mail_from.coverage" NAME="Unittests for test_smtp.TestSockets.test_mail_from Coverage Results" MODIFIED="1524123778458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_encrypt.coverage" NAME="Unittests for test_smtp.TestSockets.test_encrypt Coverage Results" MODIFIED="1524123073420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_receive_data.coverage" NAME="Unittests for test_smtp.TestSockets.test_receive_data Coverage Results" MODIFIED="1524122316843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_error_code_raises_exception.coverage" NAME="Unittests for test_smtp.TestSockets.test_error_code_raises_exception Coverage Results" MODIFIED="1524079059200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_hello.coverage" NAME="Unittests for test_smtp.TestSockets.test_hello Coverage Results" MODIFIED="1524121772151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_mail_to.coverage" NAME="Unittests for test_smtp.TestSockets.test_mail_to Coverage Results" MODIFIED="1524123845558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_sending_data.coverage" NAME="Unittests for test_smtp.TestSockets.test_sending_data Coverage Results" MODIFIED="1524078125873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_disconnect.coverage" NAME="Unittests for test_smtp.TestSockets.test_disconnect Coverage Results" MODIFIED="1524121129701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="1" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -50,13 +64,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test_smtp.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_smtp.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_smtp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+            <state relative-caret-position="337">
+              <caret line="147" column="71" selection-start-line="147" selection-start-column="71" selection-end-line="147" selection-end-column="71" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="argparser.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/argparser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,8 +103,8 @@
       <file leaf-file-name="smtp.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smtp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="77" column="23" lean-forward="true" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
+            <state relative-caret-position="1528">
+              <caret line="152" column="34" lean-forward="true" selection-start-line="152" selection-start-column="19" selection-end-line="152" selection-end-column="34" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -77,7 +115,7 @@
       <file leaf-file-name="email_builder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/email_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
+            <state relative-caret-position="318">
               <caret line="28" selection-start-line="28" selection-end-line="28" />
             </state>
           </provider>
@@ -207,26 +245,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python tests.Unittests in test_smtp.py">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="py-smtp" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/argparser.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="Unittests for test_smtp.TestSockets" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_smtp.TestSockets.test_mail_from" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="py-smtp" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -237,7 +256,35 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_smtp.TestSockets&quot;" />
+      <option name="_new_target" value="&quot;test_smtp.TestSockets.test_mail_from&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_smtp.TestSockets.test_mail_to" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="py-smtp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_smtp.TestSockets.test_mail_to&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_smtp.TestSockets.test_mail_to_error" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="py-smtp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_smtp.TestSockets.test_mail_to_error&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests for test_smtp.TestSockets.test_receive__small_data" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -254,7 +301,7 @@
       <option name="_new_target" value="&quot;test_smtp.TestSockets.test_receive__small_data&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for test_smtp.TestSockets.test_sending_data" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_smtp.TestSockets.test_send_letter" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="py-smtp" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -265,21 +312,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_smtp.TestSockets.test_sending_data&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
-    <configuration name="Unittests for test_smtp.TestSockets.test_socket_timeout" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="py-smtp" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_smtp.TestSockets.test_socket_timeout&quot;" />
+      <option name="_new_target" value="&quot;test_smtp.TestSockets.test_send_letter&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests in test_smtp.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -298,18 +331,18 @@
     </configuration>
     <list>
       <item itemvalue="Python tests.Unittests in test_smtp.py" />
-      <item itemvalue="Python tests.Unittests for test_smtp.TestSockets" />
-      <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_sending_data" />
-      <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_receive__small_data" />
-      <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_socket_timeout" />
+      <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_mail_from" />
+      <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_mail_to_error" />
+      <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_mail_to" />
+      <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_send_letter" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Unittests in test_smtp.py" />
-        <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_socket_timeout" />
-        <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_receive__small_data" />
-        <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_sending_data" />
-        <item itemvalue="Python tests.Unittests for test_smtp.TestSockets" />
+        <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_send_letter" />
+        <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_mail_to" />
+        <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_mail_to_error" />
+        <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_mail_from" />
       </list>
     </recent_temporary>
   </component>
@@ -327,35 +360,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_sending_data - 2018.04.18 at 23h 51m 56s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_sending_data" configurationId="tests" />
+    <history-entry file="Unittests_for_test_smtp_TestSockets_test_mail_from - 2018.04.19 at 12h 42m 58s.xml">
+      <configuration name="Unittests for test_smtp.TestSockets.test_mail_from" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_sending_data - 2018.04.18 at 23h 52m 11s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_sending_data" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_sending_data - 2018.04.18 at 23h 52m 44s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_sending_data" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_sending_data - 2018.04.18 at 23h 54m 27s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_sending_data" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_sending_data - 2018.04.18 at 23h 56m 22s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_sending_data" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_sending_data - 2018.04.19 at 00h 01m 09s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_sending_data" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_sending_data - 2018.04.19 at 00h 01m 22s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_sending_data" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_sending_data - 2018.04.19 at 00h 02m 06s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_sending_data" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_smtp_py - 2018.04.19 at 00h 04m 59s.xml">
+    <history-entry file="Unittests_in_test_smtp_py - 2018.04.19 at 12h 43m 08s.xml">
       <configuration name="Unittests in test_smtp.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_receive__small_data - 2018.04.19 at 00h 08m 04s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_receive__small_data" configurationId="tests" />
+    <history-entry file="Unittests_for_test_smtp_TestSockets_test_mail_to_error - 2018.04.19 at 12h 44m 03s.xml">
+      <configuration name="Unittests for test_smtp.TestSockets.test_mail_to_error" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_smtp_TestSockets_test_mail_to - 2018.04.19 at 12h 44m 05s.xml">
+      <configuration name="Unittests for test_smtp.TestSockets.test_mail_to" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_smtp_py - 2018.04.19 at 12h 44m 08s.xml">
+      <configuration name="Unittests in test_smtp.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_smtp_TestSockets_test_send_letter - 2018.04.19 at 12h 46m 05s.xml">
+      <configuration name="Unittests for test_smtp.TestSockets.test_send_letter" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_smtp_TestSockets_test_send_letter - 2018.04.19 at 12h 46m 25s.xml">
+      <configuration name="Unittests for test_smtp.TestSockets.test_send_letter" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_smtp_TestSockets_test_send_letter - 2018.04.19 at 12h 47m 12s.xml">
+      <configuration name="Unittests for test_smtp.TestSockets.test_send_letter" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_smtp_TestSockets_test_send_letter - 2018.04.19 at 12h 49m 05s.xml">
+      <configuration name="Unittests for test_smtp.TestSockets.test_send_letter" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_smtp_py - 2018.04.19 at 12h 49m 28s.xml">
+      <configuration name="Unittests in test_smtp.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -376,16 +409,16 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3294509" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32445922" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32445922" />
       <window_info anchor="right" id="Coverage" order="3" side_tool="true" visible="true" weight="0.18239492" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.327787" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4987593" visible="true" weight="0.23949246" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4987593" visible="true" weight="0.24345757" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.3298969" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" show_stripe_button="false" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5012407" side_tool="true" weight="0.25852498" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39909297" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39767054" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -403,27 +436,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="20" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/email_builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="53" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/smtp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1679">
@@ -729,9 +745,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/email_builder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="606" selection-start-line="606" selection-end-line="606" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/unittest/mock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="1190" selection-start-line="1190" selection-end-line="1190" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smtp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1528">
+          <caret line="152" column="34" lean-forward="true" selection-start-line="152" selection-start-column="19" selection-end-line="152" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_smtp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="147" column="71" selection-start-line="147" selection-start-column="71" selection-end-line="147" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/argparser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="355">
           <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
@@ -741,37 +798,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        <state relative-caret-position="157">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/email_builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/smtp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="77" column="23" lean-forward="true" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_smtp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
