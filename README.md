@@ -9,11 +9,15 @@ This program implements SMTP protocol using Python without any special modules.
 
 #### Usage
 ```
-python3 main.py [-h] host port login password sender recipient text
+main.py [-h] --host HOST [-p PORT] -l LOGIN [--password PASSWORD] -s
+               SENDER [-n NAME] -r RECIPIENT [-c CC] [-b BCC]
+               [--subject SUBJECT] [-t TEXT | -f FILE] [-a ATTACHMENT]
+               [--no-ssl] [-v]
 ```
 ###### Example
 ```
-python3 main.py smtp.gmail.com 587 sender@gmail.com 123456 sender@gmail.com recipient@gmail.com Hi!
+python3 main.py --host smtp.gmail.com -l sender@gmail.com --password pass -s sender@gmail.com -r 
+recipient@gmail.com -t Hi! -a file.txt
 ```
 
 ###### Author
