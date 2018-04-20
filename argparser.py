@@ -26,12 +26,15 @@ class Parser:
                                  default=[], action='append')
         self.parser.add_argument('-b', '--bcc', help='blind carbon copy',
                                  default=[], action='append')
-        self.parser.add_argument('--subject', help='letter subject')
+        self.parser.add_argument('--subject', help='letter subject',
+                                 default=None)
         self.text = self.parser.add_mutually_exclusive_group()
         self.text.add_argument('-t', '--text', help='letter text content',
                                default=None)
         self.text.add_argument('-f', '--file', help='letter text file',
                                default=None)
+        self.parser.add_argument('-a', '--attachment', help='file to attach',
+                                 action='append', default=[])
         self.parser.add_argument('--no-ssl', help='disable secure connection',
                                  action='store_true')
         self.parser.add_argument('-v', '--verbose', help='provide all program'

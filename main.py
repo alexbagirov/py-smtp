@@ -1,5 +1,5 @@
 from smtp import SMTP, SMTPException
-from email_builder import Email
+from email_builder import Email, EmailException
 from argparser import Parser
 
 
@@ -8,7 +8,7 @@ def run() -> None:
     args = parser.parse()
     smtp = SMTP(args.verbose)
     email = Email(args.sender, args.recipient, args.name, args.cc,
-                  args.subject, args.text)
+                  args.attachment, args.subject, args.text)
 
     try:
         smtp.connect(args.host, args.port)
