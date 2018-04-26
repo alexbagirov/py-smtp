@@ -39,6 +39,9 @@ class Parser:
                                  help='specify attachment with '
                                       'specific name in the letter', nargs=2,
                                  action='append', default=[])
+        self.parser.add_argument('-z', '--zip', help='zip all attachments'
+                                                     'into one archive',
+                                 action='store_true')
         self.parser.add_argument('--no-ssl', help='disable secure connection',
                                  action='store_true')
         self.parser.add_argument('-v', '--verbose', help='provide all program'

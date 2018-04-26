@@ -1,6 +1,8 @@
 from smtp import SMTP, SMTPException
-from email_builder import Email, EmailException
+from email_builder import Email
 from argparser import Parser
+from zipfile import ZipFile
+import os
 
 
 def run() -> None:
@@ -18,6 +20,14 @@ def run() -> None:
             args.attachments.append((open(f, 'rb'), name))
         except OSError:
             continue
+
+    if args.zip:
+        with ZipFile('attachments.zip', 'w') as zip_file:
+            for f, _ in args.attachments:
+                zip_file.write(f.name)
+
+        args.attachments.clear()
+        args.attachments.append((open('attachments.zip', 'rb'), None))
 
     try:
         smtp.connect(args.host, args.port)
@@ -37,7 +47,8 @@ def run() -> None:
                       encoding=smtp.encoding)
         smtp.send_letter(email.to_string())
         smtp.disconnect()
-    except SMTPException as e:
+        os.remove('attachments.zip')
+    except (SMTPException, OSError) as e:
         smtp.client.warning('Возникла ошибка '
                             'при выполнении программы: {}'.format(e.message))
 

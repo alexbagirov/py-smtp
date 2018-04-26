@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aab14e14-7b7b-4651-8b69-61654a993674" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/argparser.py" beforeDir="false" afterPath="$PROJECT_DIR$/argparser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/email_builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,26 +67,29 @@
       <file leaf-file-name="argparser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/argparser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="59" column="31" lean-forward="true" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
+            <state relative-caret-position="126">
+              <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+            <state relative-caret-position="540">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="email_builder.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="email_builder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/email_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="40" column="54" lean-forward="true" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+            <state relative-caret-position="47">
+              <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -141,9 +143,9 @@
         <option value="$PROJECT_DIR$/tests/test_argparser.py" />
         <option value="$PROJECT_DIR$/tests/test_smtp.py" />
         <option value="$PROJECT_DIR$/smtp.py" />
+        <option value="$PROJECT_DIR$/email_builder.py" />
         <option value="$PROJECT_DIR$/argparser.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/email_builder.py" />
       </list>
     </option>
   </component>
@@ -381,7 +383,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="53" y="27" width="1307" height="741" extended-state="7" />
+    <frame x="53" y="27" width="1307" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3294509" />
@@ -684,26 +686,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/email_builder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+        <state relative-caret-position="47">
+          <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/argparser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="59" column="31" lean-forward="true" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
+        <state relative-caret-position="126">
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/email_builder.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="40" column="54" lean-forward="true" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+        <state relative-caret-position="540">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
