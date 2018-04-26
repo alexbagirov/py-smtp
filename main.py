@@ -10,7 +10,12 @@ def run() -> None:
     args.attachments = []
     for f in args.attachment:
         try:
-            args.attachments.append(open(f, 'rb'))
+            args.attachments.append((open(f, 'rb'), None))
+        except OSError:
+            continue
+    for f, name in args.named_attachment:
+        try:
+            args.attachments.append((open(f, 'rb'), name))
         except OSError:
             continue
 

@@ -35,6 +35,10 @@ class Parser:
                                default=None)
         self.parser.add_argument('-a', '--attachment', help='file to attach',
                                  action='append', default=[])
+        self.parser.add_argument('--named-attachment',
+                                 help='specify attachment with '
+                                      'specific name in the letter', nargs=2,
+                                 action='append', default=[])
         self.parser.add_argument('--no-ssl', help='disable secure connection',
                                  action='store_true')
         self.parser.add_argument('-v', '--verbose', help='provide all program'
@@ -50,11 +54,14 @@ class Parser:
         if args.name is None:
             args.name = args.sender
         if args.text is None:
-            file = sys.stdin if args.file is None \
-                else fileinput.input(args.file)
+            text = ''
 
-            with open(file, 'r') as f:
-                text = f.read(51200)
+            if args.file is not None:
+                with open(args.file, 'r') as f:
+                    text = f.read(51200)
+            else:
+                for line in sys.stdin:
+                    text += line
 
             args.text = text if text else None
         args.recipients = [args.recipient] + args.bcc

@@ -43,9 +43,10 @@ class Email:
                      'Content-Type: {}; name="{}"\n\n\n{}\n--frontier\n'
 
         for file in self.attachments:
-            text += attachment.format(file.name, guess_type(file.name)[0],
-                                      file.name,
-                                      b64encode(file.read()).decode(
+            file_name = file[1] if file[1] else file[0].name
+            text += attachment.format(file_name, guess_type(file[0].name)[0],
+                                      file[0].name,
+                                      b64encode(file[0].read()).decode(
                                           self.encoding))
         return text
 
