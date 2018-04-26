@@ -40,6 +40,7 @@ class Parser:
         self.parser.add_argument('-v', '--verbose', help='provide all program'
                                                          'logs to console',
                                  action='store_true')
+        self.parser.add_argument('-e', '--encoding', default=None)
 
     def parse(self) -> ap.Namespace:
         args = self.parser.parse_args()
@@ -49,14 +50,13 @@ class Parser:
         if args.name is None:
             args.name = args.sender
         if args.text is None:
-            f = sys.stdin if args.file is None \
+            file = sys.stdin if args.file is None \
                 else fileinput.input(args.file)
-            text = ''
 
-            for line in f:
-                text += line
+            with open(file, 'r') as f:
+                text = f.read(51200)
 
-            args.text = text
+            args.text = text if text else None
         args.recipients = [args.recipient] + args.bcc
 
         return args

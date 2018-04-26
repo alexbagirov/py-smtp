@@ -19,6 +19,7 @@ class SMTP:
         self.encrypted = False
         self.sock.settimeout(10)
         self.retries = 3
+        self.encoding = 'ascii'
 
         self.client = logging.getLogger('Client')
         self.server = logging.getLogger('Server')
@@ -97,6 +98,8 @@ class SMTP:
         self.send('starttls')
         while True:
             resp = self.receive()
+            if b'SMTPUTF8' in resp:
+                self.encoding = 'utf-8'
             if not resp.startswith(b'250'):
                 raise SMTPException('Возникла ошибка при установке '
                                     'защищённого соединения.')
@@ -192,6 +195,5 @@ class SMTP:
         if not resp.startswith(ok_code):
             raise SMTPException(resp)
 
-    @staticmethod
-    def to_bytes(s: str) -> bytes:
-        return s.encode('utf-8')
+    def to_bytes(self, s: str) -> bytes:
+        return s.encode(self.encoding)

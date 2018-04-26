@@ -7,8 +7,12 @@ def run() -> None:
     parser = Parser()
     args = parser.parse()
     smtp = SMTP(args.verbose)
-    email = Email(args.sender, args.recipient, args.name, args.cc,
-                  args.attachment, args.subject, args.text)
+    args.attachments = []
+    for f in args.attachment:
+        try:
+            args.attachments.append(open(f, 'rb'))
+        except OSError:
+            continue
 
     try:
         smtp.connect(args.host, args.port)
@@ -19,6 +23,13 @@ def run() -> None:
         smtp.mail_from(args.sender)
         for recipient in args.recipients:
             smtp.mail_to(recipient)
+
+        email = Email(args.sender, args.recipient, args.name,
+                      cc=set(args.cc),
+                      attachments=set(args.attachments),
+                      subject=args.subject,
+                      text=args.text,
+                      encoding=smtp.encoding)
         smtp.send_letter(email.to_string())
         smtp.disconnect()
     except SMTPException as e:

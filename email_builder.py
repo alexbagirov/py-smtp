@@ -10,8 +10,9 @@ class EmailException(Exception):
 
 
 class Email:
-    def __init__(self, sender: str, recipient: str, sender_name: str, cc: list,
-                 attachments: list, subject: str, text='') -> None:
+    def __init__(self, sender: str, recipient: str, sender_name: str,
+                 cc: set = (), attachments: set = (), subject: str = None,
+                 text: str = None, encoding: str = 'utf-8') -> None:
         self.date = datetime.strftime(datetime.now(), '%a, %d %b %Y %H:%M:%S')
         self.sender = sender
         self.sender_name = sender_name
@@ -20,37 +21,13 @@ class Email:
         self.cc = cc
         self.text = text
         self.attachments = attachments
-
-    def __repr__(self):
-        template = 'From: {} <{}>\nTo: {}\n{}{}' \
-                   'MIME-Version: 1.0\nDate: {}\n' \
-                   'Content-Type: multipart/mixed; boundary=frontier\n' \
-                   'Return-Path: {}\n\n\n--frontier\n' \
-                   'Content-Transfer-Encoding: 8bit\n' \
-                   'Content-Type: text/plain; ' \
-                   'charset=utf-8\n\n{}\n--frontier\n'
-        attachment = 'Content-Disposition: attachment; filename="{}"\n' \
-                     'Content-Transfer-Encoding: base64\n' \
-                     'Content-Type: {}; name="{}"\n\n\n{}\n--frontier\n'
-        email = template.format(self.sender_name, self.sender, self.recipient,
-                                self.format_cc(), self.format_subject(),
-                                self.date, self.sender, self.text)
-
-        for file in self.attachments:
-            try:
-                with open(file, 'rb') as f:
-                    email += attachment.format(file, guess_type(file)[0], file,
-                                               b64encode(
-                                                   f.read()
-                                               ).decode('utf-8'))
-            except OSError:
-                raise EmailException('Не удалось '
-                                     'открыть файл: {}'.format(file), file)
-
-        return email
+        self.encoding = encoding
+        self.subject_text = self.format_subject()
+        self.cc_text = self.format_cc()
+        self.attachments_text = self.format_attachments()
 
     def format_cc(self) -> str:
-        if len(self.cc) == 0:
+        if not self.cc:
             return ''
         return 'CC: {}\n'.format(', '.join(self.cc))
 
@@ -59,5 +36,31 @@ class Email:
             return ''
         return 'Subject: {}\n'.format(self.subject)
 
+    def format_attachments(self):
+        text = ''
+        attachment = 'Content-Disposition: attachment; filename="{}"\n' \
+                     'Content-Transfer-Encoding: base64\n' \
+                     'Content-Type: {}; name="{}"\n\n\n{}\n--frontier\n'
+
+        for file in self.attachments:
+            text += attachment.format(file.name, guess_type(file.name)[0],
+                                      file.name,
+                                      b64encode(file.read()).decode(
+                                          self.encoding))
+        return text
+
     def to_string(self) -> str:
-        return repr(self)
+        template = 'From: {} <{}>\nTo: {}\n{}{}' \
+                   'MIME-Version: 1.0\nDate: {}\n' \
+                   'Content-Type: multipart/mixed; boundary=frontier\n' \
+                   'Return-Path: {}\n\n\n--frontier\n' \
+                   'Content-Transfer-Encoding: 8bit\n' \
+                   'Content-Type: text/plain; ' \
+                   'charset=utf-8\n\n{}\n--frontier\n'
+
+        email = template.format(self.sender_name, self.sender, self.recipient,
+                                self.cc_text, self.subject_text,
+                                self.date, self.sender, self.text)
+
+        email += self.attachments_text
+        return email
