@@ -47,7 +47,8 @@ def run() -> None:
                       encoding=smtp.encoding)
         smtp.send_letter(email.to_string())
         smtp.disconnect()
-        os.remove('attachments.zip')
+        if args.zip:
+            os.remove('attachments.zip')
     except (SMTPException, OSError) as e:
         smtp.client.warning('Возникла ошибка '
                             'при выполнении программы: {}'.format(e.message))
