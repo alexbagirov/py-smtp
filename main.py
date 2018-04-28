@@ -10,10 +10,14 @@ def run() -> None:
     args = parser.parse()
     smtp = SMTP(args.verbose)
     args.attachments = []
+
     for f in args.attachment:
         try:
             args.attachments.append((open(f, 'rb'), None))
-        except OSError:
+        except OSError as e:
+            smtp.client.warn('An error occurred while opening '
+                             'the file {}: {}'.format(e.filename,
+                                                      e.strerror))
             continue
     for f, name in args.named_attachment:
         try:
@@ -47,11 +51,13 @@ def run() -> None:
                       encoding=smtp.encoding)
         smtp.send_letter(email.to_string())
         smtp.disconnect()
+        for file, _ in args.attachments:
+            file.close()
         if args.zip:
             os.remove('attachments.zip')
     except (SMTPException, OSError) as e:
-        smtp.client.warning('Возникла ошибка '
-                            'при выполнении программы: {}'.format(e.message))
+        smtp.client.warning('An error occurred '
+                            'during the runtime: {}'.format(e.message))
 
 
 if __name__ == '__main__':

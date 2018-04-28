@@ -1,6 +1,5 @@
 from getpass import getpass
 import argparse as ap
-import fileinput
 import sys
 
 
@@ -17,7 +16,7 @@ class Parser:
         self.parser.add_argument('--password', help='mailbox password',
                                  default=None)
         self.parser.add_argument('-s', '--sender', help='sender address',
-                                 required=True)
+                                 default=None)
         self.parser.add_argument('-n', '--name', help='sender name',
                                  default=None)
         self.parser.add_argument('-r', '--recipient', help='recipient address',
@@ -39,7 +38,7 @@ class Parser:
                                  help='specify attachment with '
                                       'specific name in the letter', nargs=2,
                                  action='append', default=[])
-        self.parser.add_argument('-z', '--zip', help='zip all attachments'
+        self.parser.add_argument('-z', '--zip', help='zip all attachments '
                                                      'into one archive',
                                  action='store_true')
         self.parser.add_argument('--no-ssl', help='disable secure connection',
@@ -54,14 +53,16 @@ class Parser:
 
         if args.password is None:
             args.password = getpass()
+        if args.sender is None:
+            args.sender = args.login
         if args.name is None:
             args.name = args.sender
         if args.text is None:
             text = ''
 
             if args.file is not None:
-                with open(args.file, 'r') as f:
-                    text = f.read(51200)
+                with open(args.file, 'rb') as f:
+                    text = f.read(52428800)
             else:
                 for line in sys.stdin:
                     text += line

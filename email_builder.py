@@ -37,31 +37,30 @@ class Email:
         return 'Subject: {}\n'.format(self.subject)
 
     def format_attachments(self):
-        text = ''
+        text = []
         attachment = 'Content-Disposition: attachment; filename="{}"\n' \
                      'Content-Transfer-Encoding: base64\n' \
                      'Content-Type: {}; name="{}"\n\n\n{}\n--frontier\n'
 
         for file in self.attachments:
             file_name = file[1] if file[1] else file[0].name
-            text += attachment.format(file_name, guess_type(file[0].name)[0],
-                                      file[0].name,
-                                      b64encode(file[0].read()).decode(
-                                          self.encoding))
-        return text
+            text.append(attachment.format(file_name,
+                                          guess_type(file[0].name)[0],
+                                          file[0].name,
+                                          b64encode(file[0].read()).decode(
+                                                    self.encoding)))
+        return ' '.join(text)
 
     def to_string(self) -> str:
-        template = 'From: {} <{}>\nTo: {}\n{}{}' \
-                   'MIME-Version: 1.0\nDate: {}\n' \
-                   'Content-Type: multipart/mixed; boundary=frontier\n' \
-                   'Return-Path: {}\n\n\n--frontier\n' \
-                   'Content-Transfer-Encoding: 8bit\n' \
-                   'Content-Type: text/plain; ' \
-                   'charset=utf-8\n\n{}\n--frontier\n'
+        template = ('From: {} <{}>\nTo: {}\n{}{}'
+                    'MIME-Version: 1.0\nDate: {}\n'
+                    'Content-Type: multipart/mixed; boundary=frontier\n'
+                    'Return-Path: {}\n\n\n--frontier\n'
+                    'Content-Transfer-Encoding: 8bit\n'
+                    'Content-Type: text/plain; '
+                    'charset=utf-8\n\n{}\n--frontier\n')
 
-        email = template.format(self.sender_name, self.sender, self.recipient,
-                                self.cc_text, self.subject_text,
-                                self.date, self.sender, self.text)
-
-        email += self.attachments_text
-        return email
+        return template.format(self.sender_name, self.sender, self.recipient,
+                               self.cc_text, self.subject_text,
+                               self.date, self.sender,
+                               self.text) + self.attachments_text
