@@ -12,7 +12,8 @@ class EmailException(Exception):
 class Email:
     def __init__(self, sender: str, recipient: str, sender_name: str,
                  cc: set = (), attachments: set = (), subject: str = None,
-                 text: str = None, encoding: str = 'utf-8') -> None:
+                 text: str = None, encoding: str = 'utf-8',
+                 attch_part: tuple = None) -> None:
         self.date = datetime.strftime(datetime.now(), '%a, %d %b %Y %H:%M:%S')
         self.sender = sender
         self.sender_name = sender_name
@@ -21,6 +22,7 @@ class Email:
         self.cc = cc
         self.text = text
         self.attachments = attachments
+        self.attch_part = attch_part
         self.encoding = encoding
         self.subject_text = self.format_subject()
         self.cc_text = self.format_cc()
@@ -37,6 +39,9 @@ class Email:
         return 'Subject: {}\n'.format(self.subject)
 
     def format_attachments(self):
+        if self.attch_part:
+            return self.format_attachment_part()
+
         text = []
         attachment = 'Content-Disposition: attachment; filename="{}"\n' \
                      'Content-Transfer-Encoding: base64\n' \
@@ -50,6 +55,16 @@ class Email:
                                           b64encode(file[0].read()).decode(
                                                     self.encoding)))
         return ' '.join(text)
+
+    def format_attachment_part(self):
+        attachment = 'Content-Disposition: attachment; filename="{}"\n' \
+                     'Content-Transfer-Encoding: base64\n' \
+                     'Content-Type: {}; name="{}"\n\n\n{}\n--frontier\n'
+        return attachment.format(self.attch_part[0],
+                                 guess_type(self.attch_part[0]),
+                                 self.attch_part[0],
+                                 b64encode(self.attch_part[1]).decode(
+                                     self.encoding))
 
     def to_string(self) -> str:
         template = ('From: {} <{}>\nTo: {}\n{}{}'

@@ -47,6 +47,9 @@ class Parser:
                                                          'logs to console',
                                  action='store_true')
         self.parser.add_argument('-e', '--encoding', default=None)
+        self.parser.add_argument('-m', '--max-file-size', help='max file size'
+                                                               ' in MB',
+                                 type=int, default=None)
 
     def parse(self) -> ap.Namespace:
         args = self.parser.parse_args()
@@ -69,5 +72,7 @@ class Parser:
 
             args.text = text if text else None
         args.recipients = [args.recipient] + args.bcc
+        if args.max_file_size:
+            args.max_file_size *= 1048576
 
         return args

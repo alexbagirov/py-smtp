@@ -187,6 +187,8 @@ class SMTP:
         self.client.info('Closing connection.')
         self.send('quit')
         self.sock.close()
+        self.sock = socket.socket()
+        self.encrypted = False
 
     def check_code(self, ok_code: bytes) -> None:
         resp = self.receive()
