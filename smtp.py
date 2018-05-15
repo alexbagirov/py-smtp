@@ -190,6 +190,10 @@ class SMTP:
         self.sock = socket.socket()
         self.encrypted = False
 
+    def close(self) -> None:
+        self.sock = socket.socket()
+        self.encrypted = False
+
     def check_code(self, ok_code: bytes) -> None:
         resp = self.receive()
         if not resp.startswith(ok_code):

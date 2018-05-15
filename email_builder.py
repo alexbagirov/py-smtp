@@ -31,7 +31,7 @@ class Email:
     def format_cc(self) -> str:
         if not self.cc:
             return ''
-        return 'CC: {}\n'.format(', '.join(self.cc))
+        return 'Cc: {}\n'.format(', '.join(self.cc))
 
     def format_subject(self) -> str:
         if not self.subject:
