@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aab14e14-7b7b-4651-8b69-61654a993674" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/batch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/alex.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/alex.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_attch_split.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/argparser.py" beforeDir="false" afterPath="$PROJECT_DIR$/argparser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/batch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/email_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/email_builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smtp.py" beforeDir="false" afterPath="$PROJECT_DIR$/smtp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simple.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,6 +22,7 @@
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_send_letter.coverage" NAME="Unittests for test_smtp.TestSockets.test_send_letter Coverage Results" MODIFIED="1524124145566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_tests_TestSMTP_test_exception_when_wrong_server.coverage" NAME="Unittests for tests.TestSMTP.test_exception_when_wrong_server Coverage Results" MODIFIED="1523438006900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_socket_timeout.coverage" NAME="Unittests for test_smtp.TestSockets.test_socket_timeout Coverage Results" MODIFIED="1524078661496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_attch_split_TestAttachmentsSplit_test_split_big_and_medium_files.coverage" NAME="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_and_medium_files Coverage Results" MODIFIED="1526813719955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$old_smtp.coverage" NAME="old_smtp Coverage Results" MODIFIED="1523260709287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_argparser_TestArgparser_test_something.coverage" NAME="Unittests for test_argparser.TestArgparser.test_something Coverage Results" MODIFIED="1523653005297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_in_test_argparser_py.coverage" NAME="Unittests in test_argparser.py Coverage Results" MODIFIED="1523653073667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
@@ -35,14 +35,17 @@
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSMTP_test_exception_when_wrong_server.coverage" NAME="Unittests for test_smtp.TestSMTP.test_exception_when_wrong_server Coverage Results" MODIFIED="1523626689798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_mail_to_error.coverage" NAME="Unittests for test_smtp.TestSockets.test_mail_to_error Coverage Results" MODIFIED="1524123843346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1526400188160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_attch_split_TestAttachmentsSplit_test_split_big_files.coverage" NAME="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_files Coverage Results" MODIFIED="1526814387987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1523613314859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_connects_to_server.coverage" NAME="Unittests for test_smtp.TestSockets.test_connects_to_server Coverage Results" MODIFIED="1523651762330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_attch_split_TestAttachmentsSplit_test_does_not_split_when_zero.coverage" NAME="Unittests for test_attch_split.TestAttachmentsSplit.test_does_not_split_when_zero Coverage Results" MODIFIED="1526813008385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_wrap_socket.coverage" NAME="Unittests for test_smtp.TestSockets.test_wrap_socket Coverage Results" MODIFIED="1524122851296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets.coverage" NAME="Unittests for test_smtp.TestSockets Coverage Results" MODIFIED="1524120943393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_in_test_smtp_py.coverage" NAME="Unittests in test_smtp.py Coverage Results" MODIFIED="1524250981450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_mail_from.coverage" NAME="Unittests for test_smtp.TestSockets.test_mail_from Coverage Results" MODIFIED="1524123778458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_encrypt.coverage" NAME="Unittests for test_smtp.TestSockets.test_encrypt Coverage Results" MODIFIED="1524123073420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_receive_data.coverage" NAME="Unittests for test_smtp.TestSockets.test_receive_data Coverage Results" MODIFIED="1524122316843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_attch_split_TestAttachmentsSplit.coverage" NAME="Unittests for test_attch_split.TestAttachmentsSplit Coverage Results" MODIFIED="1526814434931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_error_code_raises_exception.coverage" NAME="Unittests for test_smtp.TestSockets.test_error_code_raises_exception Coverage Results" MODIFIED="1524079059200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_hello.coverage" NAME="Unittests for test_smtp.TestSockets.test_hello Coverage Results" MODIFIED="1524121772151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/py_smtp$Unittests_for_test_smtp_TestSockets_test_mail_to.coverage" NAME="Unittests for test_smtp.TestSockets.test_mail_to Coverage Results" MODIFIED="1524123845558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
@@ -71,11 +74,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="argparser.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="argparser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/argparser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="80" column="34" lean-forward="true" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
+            <state relative-caret-position="1683">
+              <caret line="98" column="37" selection-start-line="98" selection-start-column="30" selection-end-line="98" selection-end-column="37" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -83,13 +86,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file leaf-file-name="test_attch_split.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/test_attch_split.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="1512">
+              <caret line="84" column="42" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="42" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,56 +101,11 @@
       <file leaf-file-name="simple.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simple.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="369">
+              <caret line="103" column="29" selection-start-line="103" selection-start-column="29" selection-end-line="103" selection-end-column="29" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="smtp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/smtp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="198" selection-start-line="198" selection-end-line="198" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="email_builder.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/email_builder.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="batch.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/batch.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="60" column="33" lean-forward="true" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lol" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lol">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -188,13 +146,14 @@
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/tests/test_argparser.py" />
         <option value="$PROJECT_DIR$/tests/test_smtp.py" />
-        <option value="$PROJECT_DIR$/email_builder.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/smtp.py" />
-        <option value="$PROJECT_DIR$/simple.py" />
-        <option value="$PROJECT_DIR$/lol" />
-        <option value="$PROJECT_DIR$/batch.py" />
         <option value="$PROJECT_DIR$/argparser.py" />
+        <option value="$PROJECT_DIR$/email_builder.py" />
+        <option value="$PROJECT_DIR$/lol" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/batch.py" />
+        <option value="$PROJECT_DIR$/simple.py" />
+        <option value="$PROJECT_DIR$/tests/test_attch_split.py" />
       </list>
     </option>
   </component>
@@ -245,6 +204,11 @@
               <item name="py-smtp" type="b2602c69:ProjectViewProjectNode" />
               <item name="py-smtp" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="py-smtp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="py-smtp" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -277,7 +241,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Unittests for test_attch_split.TestAttachmentsSplit">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="py-smtp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -297,7 +261,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Unittests for test_smtp.TestSockets.test_mail_to" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_attch_split.TestAttachmentsSplit" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="py-smtp" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -308,7 +272,49 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_smtp.TestSockets.test_mail_to&quot;" />
+      <option name="_new_target" value="&quot;test_attch_split.TestAttachmentsSplit&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_attch_split.TestAttachmentsSplit.test_does_not_split_when_zero" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="py-smtp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_attch_split.TestAttachmentsSplit.test_does_not_split_when_zero&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_and_medium_files" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="py-smtp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_attch_split.TestAttachmentsSplit.test_split_big_and_medium_files&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_files" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="py-smtp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_attch_split.TestAttachmentsSplit.test_split_big_files&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests for test_smtp.TestSockets.test_mail_to_error" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -325,62 +331,20 @@
       <option name="_new_target" value="&quot;test_smtp.TestSockets.test_mail_to_error&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for test_smtp.TestSockets.test_send_letter" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="py-smtp" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_smtp.TestSockets.test_send_letter&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
-    <configuration name="Unittests in test_smtp.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="py-smtp" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_smtp.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-    </configuration>
-    <configuration name="Unittests in tests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="py-smtp" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-    </configuration>
     <list>
-      <item itemvalue="Python tests.Unittests in test_smtp.py" />
-      <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_mail_to" />
-      <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_send_letter" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python tests.Unittests in tests" />
+      <item itemvalue="Python tests.Unittests for test_attch_split.TestAttachmentsSplit.test_does_not_split_when_zero" />
+      <item itemvalue="Python tests.Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_files" />
+      <item itemvalue="Python tests.Unittests for test_attch_split.TestAttachmentsSplit" />
+      <item itemvalue="Python tests.Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_and_medium_files" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for test_attch_split.TestAttachmentsSplit" />
+        <item itemvalue="Python tests.Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_files" />
+        <item itemvalue="Python tests.Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_and_medium_files" />
+        <item itemvalue="Python tests.Unittests for test_attch_split.TestAttachmentsSplit.test_does_not_split_when_zero" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python tests.Unittests in tests" />
-        <item itemvalue="Python tests.Unittests in test_smtp.py" />
-        <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_send_letter" />
-        <item itemvalue="Python tests.Unittests for test_smtp.TestSockets.test_mail_to" />
       </list>
     </recent_temporary>
   </component>
@@ -398,35 +362,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_mail_to_error - 2018.04.19 at 12h 44m 03s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_mail_to_error" configurationId="tests" />
+    <history-entry file="Unittests_for_test_attch_split_TestAttachmentsSplit_test_split_big_files - 2018.05.20 at 15h 52m 53s.xml">
+      <configuration name="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_files" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_mail_to - 2018.04.19 at 12h 44m 05s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_mail_to" configurationId="tests" />
+    <history-entry file="Unittests_for_test_attch_split_TestAttachmentsSplit_test_split_big_files - 2018.05.20 at 15h 53m 08s.xml">
+      <configuration name="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_files" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_smtp_py - 2018.04.19 at 12h 44m 08s.xml">
-      <configuration name="Unittests in test_smtp.py" configurationId="tests" />
+    <history-entry file="Unittests_for_test_attch_split_TestAttachmentsSplit_test_split_big_files - 2018.05.20 at 15h 54m 01s.xml">
+      <configuration name="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_files" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_send_letter - 2018.04.19 at 12h 46m 05s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_send_letter" configurationId="tests" />
+    <history-entry file="Unittests_for_test_attch_split_TestAttachmentsSplit - 2018.05.20 at 15h 54m 06s.xml">
+      <configuration name="Unittests for test_attch_split.TestAttachmentsSplit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_send_letter - 2018.04.19 at 12h 46m 25s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_send_letter" configurationId="tests" />
+    <history-entry file="Unittests_for_test_attch_split_TestAttachmentsSplit_test_split_big_and_medium_files - 2018.05.20 at 15h 55m 05s.xml">
+      <configuration name="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_and_medium_files" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_send_letter - 2018.04.19 at 12h 47m 12s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_send_letter" configurationId="tests" />
+    <history-entry file="Unittests_for_test_attch_split_TestAttachmentsSplit_test_split_big_and_medium_files - 2018.05.20 at 15h 55m 15s.xml">
+      <configuration name="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_and_medium_files" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_smtp_TestSockets_test_send_letter - 2018.04.19 at 12h 49m 05s.xml">
-      <configuration name="Unittests for test_smtp.TestSockets.test_send_letter" configurationId="tests" />
+    <history-entry file="Unittests_for_test_attch_split_TestAttachmentsSplit_test_split_big_and_medium_files - 2018.05.20 at 15h 55m 46s.xml">
+      <configuration name="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_and_medium_files" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_smtp_py - 2018.04.19 at 12h 49m 28s.xml">
-      <configuration name="Unittests in test_smtp.py" configurationId="tests" />
+    <history-entry file="Unittests_for_test_attch_split_TestAttachmentsSplit - 2018.05.20 at 15h 55m 50s.xml">
+      <configuration name="Unittests for test_attch_split.TestAttachmentsSplit" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_smtp_py - 2018.04.21 at 00h 03m 02s.xml">
-      <configuration name="Unittests in test_smtp.py" configurationId="tests" />
+    <history-entry file="Unittests_for_test_attch_split_TestAttachmentsSplit_test_split_big_files - 2018.05.20 at 16h 06m 28s.xml">
+      <configuration name="Unittests for test_attch_split.TestAttachmentsSplit.test_split_big_files" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tests - 2018.05.15 at 21h 03m 09s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
+    <history-entry file="Unittests_for_test_attch_split_TestAttachmentsSplit - 2018.05.20 at 16h 07m 15s.xml">
+      <configuration name="Unittests for test_attch_split.TestAttachmentsSplit" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -447,13 +411,11 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3294509" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32445922" />
-      <window_info anchor="right" id="Coverage" order="3" side_tool="true" weight="0.18239492" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.62229615" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49960348" weight="0.32612312" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4987593" visible="true" weight="0.295797" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4987593" visible="true" weight="0.3005551" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.3298969" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3294509" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" show_stripe_button="false" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5012407" side_tool="true" weight="0.25852498" />
@@ -464,6 +426,8 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3294509" />
+      <window_info anchor="right" id="Coverage" order="3" side_tool="true" weight="0.18239492" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,7 +441,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>9</line>
+          <line>10</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -486,11 +450,16 @@
           <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="30" />
+      <option name="time" value="37" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>os.path.getsize(file[0].name)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>email.attachments_text[:400]</expression-string>
         <language-id>Python</language-id>
@@ -509,20 +478,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/argparser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_smtp.py" />
     <entry file="file://$PROJECT_DIR$/smtp.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -731,13 +686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_smtp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2376">
-          <caret line="132" column="23" lean-forward="true" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python3.6/argparse.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -745,69 +693,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lol">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/email_builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/smtp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="198" selection-start-line="198" selection-end-line="198" />
+        <state relative-caret-position="1107">
+          <caret line="78" column="51" lean-forward="true" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/email_builder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="-117">
+          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backup.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/batch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="60" column="33" lean-forward="true" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
+        <state relative-caret-position="90">
+          <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simple.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="270">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
           <folding>
-            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_smtp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/argparser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="80" column="34" lean-forward="true" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
+        <state relative-caret-position="1683">
+          <caret line="98" column="37" selection-start-line="98" selection-start-column="30" selection-end-line="98" selection-end-column="37" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simple.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="103" column="29" selection-start-line="103" selection-start-column="29" selection-end-line="103" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_attch_split.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1512">
+          <caret line="84" column="42" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

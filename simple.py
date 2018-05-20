@@ -1,6 +1,7 @@
 from smtp import SMTP, SMTPException
 from zipfile import ZipFile
 from email_builder import Email
+from argparse import Namespace
 import os
 
 
@@ -9,38 +10,14 @@ def run(args) -> None:
     args.attachments = []
     attch_parts = []
 
-    for f in args.attachment:
-        try:
-            args.attachments.append((open(f, 'rb'), None))
-        except OSError as e:
-            smtp.client.warn('An error occurred while opening '
-                             'the file {}: {}'.format(e.filename,
-                                                      e.strerror))
-            continue
-    for f, name in args.named_attachment:
-        try:
-            args.attachments.append((open(f, 'rb'), name))
-        except OSError:
-            continue
+    open_attachments(args, smtp)
+    open_named_attachments(args)
 
     if args.zip:
-        with ZipFile('attachments.zip', 'w') as zip_file:
-            for f, _ in args.attachments:
-                zip_file.write(f.name)
-
-        args.attachments.clear()
-        args.attachments.append((open('attachments.zip', 'rb'), None))
+        zip_attachments(args)
 
     if args.max_file_size:
-        for file in args.attachments:
-            if os.path.getsize(file[0].name) > args.max_file_size:
-                part = file[0].read(args.max_file_size)
-                attch_parts.append((file[0].name, part))
-                while part != b'':
-                    part = file[0].read(args.max_file_size)
-                    attch_parts.append((file[0].name, part))
-                attch_parts.pop()
-                args.attachments.remove(file)
+        split_attachments(args, attch_parts)
 
     i = 0
     without_attch = not args.attachments and not attch_parts
@@ -84,3 +61,47 @@ def run(args) -> None:
             smtp.client.warning('An error occurred '
                                 'during the runtime: {}'.format(e.message))
             smtp.close()
+
+
+def open_attachments(args: Namespace, smtp: SMTP):
+    for f in args.attachment:
+        try:
+            args.attachments.append((open(f, 'rb'), None))
+        except OSError as e:
+            smtp.client.warn('An error occurred while opening '
+                             'the file {}: {}'.format(e.filename,
+                                                      e.strerror))
+            continue
+
+
+def open_named_attachments(args: Namespace):
+    for f, name in args.named_attachment:
+        try:
+            args.attachments.append((open(f, 'rb'), name))
+        except OSError:
+            continue
+
+
+def zip_attachments(args: Namespace):
+    with ZipFile('attachments.zip', 'w') as zip_file:
+        for f, _ in args.attachments:
+            zip_file.write(f.name)
+
+    args.attachments.clear()
+    args.attachments.append((open('attachments.zip', 'rb'), None))
+
+
+def split_attachments(args: Namespace, attch_parts: list):
+    big_files = []
+    for file in args.attachments:
+        if os.path.getsize(file[0].name) > args.max_file_size > 0:
+            big_files.append(file)
+            part = file[0].read(args.max_file_size)
+            attch_parts.append((file[0].name, part))
+            while part != b'':
+                part = file[0].read(args.max_file_size)
+                attch_parts.append((file[0].name, part))
+            attch_parts.pop()
+
+    for file in big_files:
+        args.attachments.remove(file)

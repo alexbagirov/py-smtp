@@ -43,28 +43,28 @@ class Email:
             return self.format_attachment_part()
 
         text = []
-        attachment = 'Content-Disposition: attachment; filename="{}"\n' \
-                     'Content-Transfer-Encoding: base64\n' \
-                     'Content-Type: {}; name="{}"\n\n\n{}\n--frontier\n'
+        attachment = ('Content-Disposition: attachment; filename="{}"\n'
+                      'Content-Transfer-Encoding: base64\n'
+                      'Content-Type: {}; name="{}"\n\n\n{}\n--frontier\n')
 
-        for file in self.attachments:
-            file_name = file[1] if file[1] else file[0].name
-            text.append(attachment.format(file_name,
-                                          guess_type(file[0].name)[0],
-                                          file[0].name,
-                                          b64encode(file[0].read()).decode(
-                                                    self.encoding)))
+        for fname, new_name in self.attachments:
+            file_name = new_name if new_name else fname[0].name
+            text.append(attachment.format(
+                file_name,
+                guess_type(fname[0].name)[0],
+                fname[0].name,
+                b64encode(fname[0].read()).decode(self.encoding)))
         return ' '.join(text)
 
     def format_attachment_part(self):
-        attachment = 'Content-Disposition: attachment; filename="{}"\n' \
-                     'Content-Transfer-Encoding: base64\n' \
-                     'Content-Type: {}; name="{}"\n\n\n{}\n--frontier\n'
-        return attachment.format(self.attch_part[0],
-                                 guess_type(self.attch_part[0]),
-                                 self.attch_part[0],
-                                 b64encode(self.attch_part[1]).decode(
-                                     self.encoding))
+        attachment = ('Content-Disposition: attachment; filename="{}"\n'
+                      'Content-Transfer-Encoding: base64\n'
+                      'Content-Type: {}; name="{}"\n\n\n{}\n--frontier\n')
+        return attachment.format(
+            self.attch_part[0],
+            guess_type(self.attch_part[0]),
+            self.attch_part[0],
+            b64encode(self.attch_part[1]).decode(self.encoding))
 
     def to_string(self) -> str:
         template = ('From: {} <{}>\nTo: {}\n{}{}'
