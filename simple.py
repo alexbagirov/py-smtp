@@ -34,7 +34,8 @@ def run(args) -> None:
 
             email = Email(args.sender, args.recipient, args.name,
                           cc=set(args.cc),
-                          attachments=set(args.attachments) if i == 0 else None,
+                          attachments=set(args.attachments)
+                          if i == 0 else None,
                           attch_part=attch_parts[0]
                           if not without_attch else None,
                           subject=args.subject if i == 0 else

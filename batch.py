@@ -22,7 +22,7 @@ class BatchSender:
         self.bcc_limit = 15
         self.before_save = SAVE_DELAY
 
-        self.email = re.compile('\S+@\S+')
+        self.email = re.compile(r'\S+@\S+')
 
         self.load()
 

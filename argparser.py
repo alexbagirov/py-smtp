@@ -37,7 +37,8 @@ class Parser:
                                help='file for batch message delivery',
                                default=None)
         self.file.add_argument('--batch-bcc',
-                               help='send email to multiple recipients at once',
+                               help='send email to multiple '
+                                    'recipients at once',
                                action='store_true')
 
         self.data = self.parser.add_argument_group(
