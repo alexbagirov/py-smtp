@@ -9,10 +9,12 @@ This program implements SMTP protocol using Python without any special modules.
 
 #### Usage
 ```
-main.py [-h] --host HOST [-p PORT] -l LOGIN [--password PASSWORD] -s
-               SENDER [-n NAME] -r RECIPIENT [-c CC] [-b BCC]
-               [--subject SUBJECT] [-t TEXT | -f FILE] [-a ATTACHMENT]
-               [--no-ssl] [-v]
+usage: main.py [-h] --host HOST [-p PORT] -l LOGIN [--password PASSWORD]
+               [-r RECIPIENT] [-c CC] [-b BCC] [--batch BATCH] [--batch-bcc]
+               [-s SENDER] [-n NAME] [--subject SUBJECT] [-t TEXT | -f FILE]
+               [-a ATTACHMENT]
+               [--named-attachment NAMED_ATTACHMENT NAMED_ATTACHMENT] [-z]
+               [--no-ssl] [-v] [-e ENCODING] [-m MAX_FILE_SIZE]
 ```
 ###### Example
 ```
